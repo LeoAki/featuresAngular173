@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, input, Output, output } from '@angular/core';
 import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -10,8 +10,8 @@ import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-int
 })
 export class OutputComponent {
   page = output<number>({ alias: 'currentPage' });
-  page$ = outputToObservable(this.page);
+  // page$ = outputToObservable(this.page);
   doSomething() {
-    this.page.emit(1);
+    this.page.emit(Math.floor(Math.random()*10) + 1);
   }
 }
